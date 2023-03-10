@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<a href="/categories/">Сategories</a>
+<br>
+<br>
+<br>
+{{ category_id }}
+
+<form action="/categories/categories_open/expense_add/" method="post">
+     {% csrf_token %}
+    <input type="text" name="expense_text">
+    <input type="submit">
+</form>
+
+{% for c in all_expenses %}
+        <p>Расход: {{ c.expense_text }}</p>
+        <a href="/categories/categories_open/expense_delete/{{ c.id }}/">Удалить расход</a>
+    {% endfor %}
+</body>
+</html>
