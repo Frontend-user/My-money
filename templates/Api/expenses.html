@@ -11,18 +11,24 @@
 
 <a href="/categories/">Сategories</a>
 <br>
+{#<a href="/statistics/">Статистика</a>#}
 <br>
 <br>
-{{ category_id }}
+<br>
 
-<form action="/categories/categories_open/expense_add/" method="post">
+<form action="/categories/categories_open/expense_add/{{ category_to_open.id }}/" method="post">
      {% csrf_token %}
-    <input type="text" name="expense_text">
+     Название
+    <input type="text" name="expense_text" >
+    <br>
+    Бабки
+    <input type="number" name="expense_number" value="Бабки">
     <input type="submit">
 </form>
 
-{% for c in all_expenses %}
+{% for c in expenses %}
         <p>Расход: {{ c.expense_text }}</p>
+        <p>Бабки: {{ c.expense_number }}</p>
         <a href="/categories/categories_open/expense_delete/{{ c.id }}/">Удалить расход</a>
     {% endfor %}
 </body>
